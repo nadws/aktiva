@@ -14,7 +14,10 @@ class AktivaController extends Controller
      */
     public function index()
     {
-        //
+        $data = [
+            'title' => 'Aktiva',
+        ];
+        return view('aktiva.index', $data);
     }
 
     /**

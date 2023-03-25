@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AktivaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,4 +29,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
             return view('admin.component.accordion');
         })->name('accordion');
     });
+});
+Route::controller(AktivaController::class)->group(function () {
+    Route::get('/aktiva', 'index')->name('aktiva');
 });

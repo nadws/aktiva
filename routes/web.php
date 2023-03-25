@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PeralatanController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,5 +28,10 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
         Route::get('/accordion', function () {
             return view('admin.component.accordion');
         })->name('accordion');
+    });
+
+    Route::controller(PeralatanController::class)->group(function(){
+        Route::get('peralatan', 'index')->name('peralatan');
+        Route::post('peralatan', 'create')->name('peralatan.create');
     });
 });

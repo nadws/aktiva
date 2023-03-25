@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PeralatanController;
+use App\Http\Controllers\AktivaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,4 +35,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
         Route::get('peralatan', 'index')->name('peralatan');
         Route::post('peralatan', 'create')->name('peralatan.create');
     });
+});
+Route::controller(AktivaController::class)->group(function () {
+    Route::get('/aktiva', 'index')->name('aktiva');
 });

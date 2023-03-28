@@ -37,7 +37,7 @@
                         @else
                             @foreach ($db as $no => $d)
                                 <tr>
-                                    <td>{{ $no + 1 }}</td>
+                                    <td>{{ $no + $db->firstItem() }}</td>
                                     <td>{{ $d->name }}</td>
                                     <td>{{ $d->email }}</td>
                                 </tr>

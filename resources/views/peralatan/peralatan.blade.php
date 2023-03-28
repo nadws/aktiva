@@ -19,60 +19,54 @@
             <div class="card-header">
                 <ul class="nav nav-tabs float-start" id="myTab" role="tablist">
                     <li class="nav-item" role="presentation">
-                      <a
-                        class="nav-link active"
-                        id="home-tab"
-                        data-bs-toggle="tab"
-                        href="#home"
-                        role="tab"
-                        aria-controls="home"
-                        aria-selected="true"
-                        >Lunas</a
-                      >
+                        <a class="nav-link active" id="home-tab" data-bs-toggle="tab" href="#home" role="tab"
+                            aria-controls="home" aria-selected="true">Lunas</a>
                     </li>
                     <li class="nav-item" role="presentation">
-                      <a
-                        class="nav-link"
-                        id="profile-tab"
-                        data-bs-toggle="tab"
-                        href="#profile"
-                        role="tab"
-                        aria-controls="profile"
-                        aria-selected="false"
-                        >Cicilan</a
-                      >
+                        <a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#profile" role="tab"
+                            aria-controls="profile" aria-selected="false">Cicilan</a>
                     </li>
-                    
-                  </ul>
-                <button data-bs-target="#tambah" data-bs-toggle="modal" class="btn btn-md btn-primary float-end"><i class="fas fa-plus-square"></i> Tambah</button>
+
+                </ul>
+                <button data-bs-target="#tambah" data-bs-toggle="modal" class="btn btn-md btn-primary float-end"><i
+                        class="fas fa-plus-square"></i> Tambah</button>
             </div>
 
             <div class="card-body">
-                @livewire('peralatan', )
+                @livewire('datatables')
             </div>
         </div>
     </section>
 
     <form action="{{ route('peralatan.create') }}" method="post">
         @csrf
-    <x-modal id="tambah" title="Tambah Peralatan" size="modal-lg">
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="form-group">
-                    <label for="">Tanggal</label>
-                    <input type="date" name="tgl" class="form-control">
+        <x-modal id="tambah" title="Tambah Peralatan" size="modal-lg">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label for="">Tanggal</label>
+                        <input type="date" name="tgl" class="form-control">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label for="">No ID</label>
+                        <input type="text" name="noid" class="form-control">
+                    </div>
+
                 </div>
             </div>
-            <div class="col-lg-6">
-                <div class="form-group">
-                    <label for="">No ID</label>
-                    <input type="text" name="noid" class="form-control">
-                </div>
-              
-            </div>
-        </div>
-    </x-modal>
-</form>
-    
+        </x-modal>
+    </form>
+    @section('scripts')
+        <script>
+            document.addEventListener('livewire:load', function() {
+                Livewire.on('hideModal', function(data) {
+                    $("#tambah").modal('hide')
+                });
+            });
+            
+        </script>
+    @endsection
 
 </x-app-layout>

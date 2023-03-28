@@ -17,7 +17,7 @@
         $("#table").DataTable({})
     });
 </script>
-
+@stack('scripts1')
 @if (session()->has('sukses'))
     <script>
         $(document).ready(function() {
